@@ -1,0 +1,27 @@
+{
+  "name": "xhr-queue",
+  "version": "1.0.0",
+  "main": "dist/prefetch.js",
+  "scripts": {
+    "serve": "parcel index.html",
+    "build:standalone": "parcel build prefetch.js --global prefetch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "inspector": "0.5.0",
+    "p-limit": "2.2.2",
+    "requestidlecallback": "0.3.0",
+    "throttles": "1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "13.7.4"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ]
+}
