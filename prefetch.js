@@ -1,17 +1,14 @@
 // @ts-check
 import throttles from 'throttles';
 import { request } from './node_modules/requestidlecallback';
-import { resolve } from 'dns';
 
 const [toAdd, isDone] = throttles(1);
 
-// function fetchData(url) {
-//     return fetch(url, {
-//         mode: 'no-cors'
-//     });
-// }
-
-function fetchData(url) {
+/**
+ *
+ * @param {*} url
+ */
+function executeScript(url) {
     return new Promise((resolve, reject) => {
         const head =
             document.getElementsByTagName('head')[0] ||
@@ -34,7 +31,7 @@ function fetchData(url) {
 function prefetch(urls) {
     const promises = urls.map(url => {
         return toAdd(() => {
-            request(() => fetchData(url).then(isDone));
+            request(() => executeScript(url).then(isDone));
         });
     });
     return Promise.all(promises);

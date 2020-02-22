@@ -357,8 +357,6 @@ var global = arguments[3];
 	};
 }));
 
-},{}],"../../.nvm/versions/node/v10.16.3/lib/node_modules/parcel/src/builtins/_empty.js":[function(require,module,exports) {
-
 },{}],"prefetch.js":[function(require,module,exports) {
 "use strict";
 
@@ -370,8 +368,6 @@ exports.default = void 0;
 var _throttles3 = _interopRequireDefault(require("throttles"));
 
 var _requestidlecallback = require("./node_modules/requestidlecallback");
-
-var _dns = require("dns");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -386,14 +382,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 const _throttles = (0, _throttles3.default)(1),
       _throttles2 = _slicedToArray(_throttles, 2),
       toAdd = _throttles2[0],
-      isDone = _throttles2[1]; // function fetchData(url) {
-//     return fetch(url, {
-//         mode: 'no-cors'
-//     });
-// }
+      isDone = _throttles2[1];
+/**
+ *
+ * @param {*} url
+ */
 
 
-function fetchData(url) {
+function executeScript(url) {
   return new Promise((resolve, reject) => {
     const head = document.getElementsByTagName('head')[0] || document.documentElement;
     const script = document.createElement('script');
@@ -414,7 +410,7 @@ function fetchData(url) {
 function prefetch(urls) {
   const promises = urls.map(url => {
     return toAdd(() => {
-      (0, _requestidlecallback.request)(() => fetchData(url).then(isDone));
+      (0, _requestidlecallback.request)(() => executeScript(url).then(isDone));
     });
   });
   return Promise.all(promises);
@@ -422,7 +418,7 @@ function prefetch(urls) {
 
 var _default = prefetch;
 exports.default = _default;
-},{"throttles":"node_modules/throttles/dist/index.mjs","./node_modules/requestidlecallback":"node_modules/requestidlecallback/index.js","dns":"../../.nvm/versions/node/v10.16.3/lib/node_modules/parcel/src/builtins/_empty.js"}],"index.js":[function(require,module,exports) {
+},{"throttles":"node_modules/throttles/dist/index.mjs","./node_modules/requestidlecallback":"node_modules/requestidlecallback/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _prefetch = _interopRequireDefault(require("./prefetch.js"));
