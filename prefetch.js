@@ -5,22 +5,14 @@ import { request } from './node_modules/requestidlecallback';
 const [toAdd, isDone] = throttles(1);
 
 /**
- *
  * @param {*} url
  */
-function executeScript(url) {
-    return new Promise((resolve, reject) => {
-        const head =
-            document.getElementsByTagName('head')[0] ||
-            document.documentElement;
-        const script = document.createElement('script');
-
-        script.type = 'text/javascript';
-        script.src = url;
-        script.addEventListener('load', resolve);
-        script.addEventListener('error', reject);
-        head.appendChild(script);
-    });
+function get(url) {
+    if ('fetch' in window) {
+        return fetch(url, {
+            mode: 'no-cors'
+        });
+    }
 }
 
 /**
@@ -31,7 +23,7 @@ function executeScript(url) {
 function prefetch(urls) {
     const promises = urls.map(url => {
         return toAdd(() => {
-            request(() => executeScript(url).then(isDone));
+            request(() => get(url).then(isDone));
         });
     });
     return Promise.all(promises);
