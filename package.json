@@ -1,6 +1,6 @@
 {
-  "name": "xhr-queue",
-  "version": "1.0.0",
+  "name": "prefetch-queue",
+  "version": "1.0.1",
   "main": "dist/prefetch.js",
   "scripts": {
     "start": "parcel index.html",
@@ -13,15 +13,17 @@
   "description": "",
   "dependencies": {
     "inspector": "0.5.0",
-    "p-limit": "2.2.2",
     "requestidlecallback": "0.3.0",
     "throttles": "1.0.0"
   },
   "devDependencies": {
     "@types/node": "13.7.4"
   },
+  "files": [
+    "dist/"
+  ],
   "browserslist": [
     "defaults",
-    "not IE 11"
+    "not IE"
   ]
 }
