@@ -23,7 +23,9 @@
     "dist/"
   ],
   "browserslist": [
-    "defaults",
-    "not IE"
+    "last 2 versions",
+    "not ie < 11",
+    "safari >= 9",
+    "> 1%"
   ]
 }
