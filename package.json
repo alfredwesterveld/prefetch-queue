@@ -12,7 +12,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "inspector": "0.5.0",
     "requestidlecallback": "0.3.0",
     "throttles": "1.0.0"
   },
